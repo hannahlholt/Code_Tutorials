@@ -6,7 +6,7 @@ learnMSIS.py is a program designed to help the user understand basic features an
 Before you can run this program, you must download the pyglow module. This can be found at:
 https://github.com/timduly4/pyglow
 Select the green "clone or download" button. Then run the 'pyglow_install.sh' script from the command line. You can also
-check out the README file for more help. (Remember Python 2.7!!!)
+check out the pyglow README file for more help. (Remember Python 2.7!!!)
 You should be able to run this program and any other pyglow features after that.
 
 '''
