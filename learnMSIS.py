@@ -181,7 +181,7 @@ and longitude. For example, let's plot global temperature at an altitude of 400 
 '''
 
 # first lets define all our variables
-date = datetime(1992, 3, 20, 0, 0)                      # using this date b/c is was low geomagnetic activity
+date = datetime(1992, 3, 20, 0, 0)                      # using this date b/c it was low geomagnetic activity
 gridsize = 2                                            # 2 degree grid size.
 latitudes = np.arange(-90, 90, gridsize)                # lat and lon array values to pass into MSIS
 longitudes = np.arange(-180, 180, gridsize)
@@ -203,7 +203,7 @@ x = np.arange(-180, 180, gridsize)
 y = np.arange(-90, 90, gridsize)
 X, Y = np.meshgrid(x, y)
 
-# make a contour plot - refer to online for details
+# make a contour plot - refer online for details
 plt.figure()
 levels = np.linspace(np.amin(temp_matrix), np.amax(temp_matrix), 100)
 myplot = plt.contourf(X, Y, temp_matrix, levels,cmap='jet')
