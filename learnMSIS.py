@@ -176,6 +176,42 @@ plt.show()
 #**********************************************************************************************************************
 
 '''
-
+Now that we understand the basics of using MSIS, let's create a global contour plot of an output variable for every latitude
+and longitude. For example, let's plot global temperature at an altitude of 400 km.
 '''
+
+# first lets define all our variables
+date = datetime(1992, 3, 20, 0, 0)                      # using this date b/c is was low geomagnetic activity
+gridsize = 2                                            # 2 degree grid size.
+latitudes = np.arange(-90, 90, gridsize)                # lat and lon array values to pass into MSIS
+longitudes = np.arange(-180, 180, gridsize)
+altitude = 400
+temp_matrix = np.zeros( (len(latitudes), len(longitudes)) )         # rows = lat, columns = lon
+
+
+# Loop through lat and lon. select what MSIS values are desired
+for i in range(0, len(longitudes)):
+    for j in range(0, len(latitudes)):
+        pt = Point(date, latitudes[j], longitudes[i], altitude)     # make Point and call MSIS
+        result = pt.run_msis()
+        temp_matrix[j, i] = result.Tn_msis                          # save the MSIS temp value
+
+# Now plot the temperature matrix
+
+# Create grid to plot data onto
+x = np.arange(-180, 180, gridsize)
+y = np.arange(-90, 90, gridsize)
+X, Y = np.meshgrid(x, y)
+
+# make a contour plot - refer to online for details
+plt.figure()
+levels = np.linspace(np.amin(temp_matrix), np.amax(temp_matrix), 100)
+myplot = plt.contourf(X, Y, temp_matrix, levels,cmap='jet')
+cont = plt.contour(X, Y, temp_matrix, 10, colors='k')
+cbar = plt.colorbar(myplot)
+cbar.ax.set_ylabel('Neutral Temp [K]')
+plt.title('MSIS Neutral Temp: $Z_{gm}$=400km, UT=0')
+plt.xlabel('Longitude [deg]')
+plt.ylabel('Latitude [deg]')
+plt.show()
 
