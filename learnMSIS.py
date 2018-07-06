@@ -62,7 +62,7 @@ altitude = 400
 
 #--------------------------------------------------
 
-# for now we will not deal with inputting our out geophys indices, so we let the Point obj do this for us.
+# for now we will not deal with inputting our own geophys indices, so we let the Point object do this for us.
 # Now make the Point object!
 
 new_pt = Point(date, latitude, longitude, altitude)
